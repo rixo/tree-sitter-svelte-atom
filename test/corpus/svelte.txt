@@ -69,6 +69,7 @@ logical_blocks
 
 { thenRandomExpr }
 { @html '<p>hello world</p>'}
+{ @debug hello}
 {{}}
 -------
 (document
@@ -119,6 +120,7 @@ logical_blocks
     )
     (expression (raw_text_expr))
     (html_expr (special_block_keyword) (raw_text_expr))
+    (debug_expr (special_block_keyword) (raw_text_expr))
     (expression (raw_text_expr))
 )
 
@@ -292,4 +294,3 @@ testing
     (end_tag (tag_name))
   )
 )
-
