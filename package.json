@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-svelte-atom",
-  "version": "0.1.0",
+  "version": "0.1.0-1",
   "description": "Tree-sitter-grammar for svelte",
   "main": "bindings/node",
   "scripts": {
