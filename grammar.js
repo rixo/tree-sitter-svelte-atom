@@ -117,7 +117,7 @@ module.exports = grammar({
     _text: ($) => choice(alias(/[^<>{}\s]([^<>{}]*[^<>{}\s])?/, $.text), $._expression),
 
     _expression: ($) =>
-      choice($.expression, $.html_expr, $.debug_expr, alias("{}", $.expression)),
+      choice($.expression, $.html_expr, $.debug_expr, $.const_expr, alias("{}", $.expression)),
 
     expression: ($) => seq("{", $.raw_text_expr, "}"),
 
@@ -135,6 +135,15 @@ module.exports = grammar({
         "{",
         "@",
         alias("debug", $.special_block_keyword),
+        optional($.raw_text_expr),
+        "}"
+      ),
+
+    const_expr: ($) =>
+      seq(
+        "{",
+        "@",
+        alias("const", $.special_block_keyword),
         optional($.raw_text_expr),
         "}"
       ),
