@@ -1,66 +1,10 @@
-# Tree-sitter-svelte
+# tree-sitter-svelte-atom
 
-Tree-sitter grammar for [svelte](https://svelte.dev)
+This is a fork of [tree-sitter-svelte](https://github.com/Himujjal/tree-sitter-svelte/) with [downgraded tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/issues/966#issuecomment-813016444) to make it possible to use it in an Atom grammar package.
 
-# Install
+As the only goal of this fork is to enable Atom grammars, other improvements toward this goal might be added in the short term, however the long-term goal is to have these changes incorporated into the upstream tree-sitter-svelte package (or abandonned, if they don't prove valuable enough).
 
-```
-npm i tree-sitter-svelte tree-sitter
-```
-
-# Usage
-
-To get started with exploring the grammar in a web-ui. Run:
-
-NOTE: `emcc` must be installed and in your path 
-```sh
-npm run ui
-```
-
-To use the grammar from javascript:
-
-```javascript
-const Parser = require("tree-sitter");
-const Svelte = require("tree-sitter-svelte");
-
-const parser = new Parser();
-parser.setLanguage(Svelte);
-
-const sourceCode = `
-<script context="module">
-    let name = 'world';
-</script>
-<h1>Hello {name'<>{}``"\\''""``{}}!</h1>
-`;
-
-const tree = parser.parse(sourceCode);
-console.log(tree.rootNode.toString());
-
-// (document
-//    (script_element
-//        (start_tag (tag_name)
-//            (attribute (attribute_name) (quoted_attribute_value (attribute_value))))
-//        (raw_text)
-//        (end_tag (tag_name))
-//    )
-//    (element
-//        (start_tag (tag_name))
-//        (text) (raw_text_expr) (text)
-//        (end_tag (tag_name)
-//    )
-//  )
-//)
-
-```
-
-# Languages supported:
-
-- [x] JavaScript/TypeScript
-- [x] Rust
-- [ ] Go
-- [x] Zig
-- [ ] Nim
-- [ ] Python
+Eventually, our intention is to deprecate this fork when Atom's support of tree-sitter is upgraded, so that the upstream parser can be used instead.
 
 # LICENSE
 
